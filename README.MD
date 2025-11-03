@@ -28,6 +28,19 @@ Frontend conectado ao backend Flask para interação direta com os dados.
 
 ---
 
-## 🧠 Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
-
+```bash
+SPRINT 4/
+│
+├── app.py                  # Código principal: rotas Flask, inicialização do banco e API
+├── models.py               # Definição das tabelas (Consultas, Parentes, Lembretes)
+├── dados_iniciais.json     # Dados de exemplo (base importada do Challenge.py)
+├── requirements.txt        # Dependências do projeto (Flask, SQLAlchemy, Requests)
+├── .gitignore              # Ignora venv, banco de dados e arquivos temporários
+│
+├── instance/               # Pasta criada automaticamente pelo Flask
+│   └── db.sqlite3          # Banco de dados SQLite gerado ao rodar o sistema
+│
+└── static/                 # Arquivos do front-end
+    └── index.html          # Página web simples (listar, exportar e importar dados)
