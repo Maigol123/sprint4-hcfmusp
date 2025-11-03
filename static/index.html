@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Consultas HCFMUSP</title>
+<style>
+body{font-family:Arial, sans-serif;margin:20px;}
+input,button{margin:5px;}
+</style>
+</head>
+<body>
+<h1>Consultas - HCFMUSP</h1>
+<button onclick="listar()">Listar</button>
+<button onclick="exportar()">Exportar JSON</button>
+<button onclick="importar()">Importar Médicos API</button>
+<ul id="lista"></ul>
+<script>
+async function listar(){
+  const r=await fetch("/consultas");const dados=await r.json();
+  document.getElementById("lista").innerHTML=dados.map(c=>`<li>${c.paciente} - ${c.medico} (${c.data})</li>`).join("");
+}
+async function exportar(){window.location="/exportar";}
+async function importar(){await fetch("/importar_medicos",{method:"POST"});listar();}
+listar();
+</script>
+</body>
+</html>
