@@ -1,27 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Consultas HCFMUSP</title>
-<style>
-body{font-family:Arial, sans-serif;margin:20px;}
-input,button{margin:5px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Consultas - HCFMUSP</title>
+  <!-- Tailwind CSS (via CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1>Consultas - HCFMUSP</h1>
-<button onclick="listar()">Listar</button>
-<button onclick="exportar()">Exportar JSON</button>
-<button onclick="importar()">Importar Médicos API</button>
-<ul id="lista"></ul>
-<script>
-async function listar(){
-  const r=await fetch("/consultas");const dados=await r.json();
-  document.getElementById("lista").innerHTML=dados.map(c=>`<li>${c.paciente} - ${c.medico} (${c.data})</li>`).join("");
-}
-async function exportar(){window.location="/exportar";}
-async function importar(){await fetch("/importar_medicos",{method:"POST"});listar();}
-listar();
-</script>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <header class="bg-blue-700 text-white py-5 shadow-md">
+    <h1 class="text-3xl font-bold text-center">🏥 Sistema de Consultas - HCFMUSP</h1>
+    <p class="text-center text-sm mt-1">Integração Python + Banco de Dados + Front-End</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-6">
+    <h2 class="text-2xl font-semibold mb-4">Ações Disponíveis</h2>
+
+    <div class="flex flex-wrap gap-4 mb-8">
+      <button id="btnListar" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Listar Consultas</button>
+      <button id="btnExportar" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition">Exportar JSON</button>
+      <button id="btnImportar" class="bg-yellow-500 text-white px-5 py-2 rounded-lg hover:bg-yellow-600 transition">Importar Médicos (API)</button>
+      <button id="btnLimpar" class="bg-gray-400 text-white px-5 py-2 rounded-lg hover:bg-gray-500 transition">Limpar Tela</button>
+    </div>
+
+    <section>
+      <h3 class="text-xl font-medium mb-3">📋 Lista de Consultas</h3>
+      <div id="output" class="bg-gray-50 border border-gray-200 rounded-lg p-4 h-80 overflow-y-auto text-sm"></div>
+    </section>
+  </main>
+
+  <footer class="text-center text-gray-500 text-sm mt-10 mb-5">
+    <p>Desenvolvido por <strong>Miguel Oliveira Dias</strong> | FIAP 2025</p>
+  </footer>
+
+  <script>
+    const output = document.getElementById("output");
+    const btnListar = document.getElementById("btnListar");
+    const btnExportar = document.getElementById("btnExportar");
+    const btnImportar = document.getElementById("btnImportar");
+    const btnLimpar = document.getElementById("btnLimpar");
+
+    // Função para exibir mensagens na tela
+    const showMessage = (msg, type = "info") => {
+      const colors = {
+        info: "text-blue-700",
+        success: "text-green-700",
+        error: "text-red-700"
+      };
+      output.innerHTML = `<p class="${colors[type]} font-medium">${msg}</p>`;
+    };
+
+    // Listar consultas
+    btnListar.addEventListener("click", async () => {
+      try {
+        const res = await fetch("/consultas");
+        const consultas = await res.json();
+
+        if (consultas.length === 0) {
+          showMessage("Nenhuma consulta cadastrada ainda.", "info");
+          return;
+        }
+
+        output.innerHTML = consultas
+          .map(c => `
+            <div class="border-b border-gray-200 py-2">
+              <p><strong>Paciente:</strong> ${c.paciente}</p>
+              <p><strong>Médico:</strong> ${c.medico}</p>
+              <p><strong>Data:</strong> ${c.data}</p>
+              <p><strong>Hora:</strong> ${c.hora}</p>
+            </div>
+          `)
+          .join("");
+      } catch (error) {
+        showMessage("Erro ao carregar consultas.", "error");
+      }
+    });
+
+    // Exportar JSON
+    btnExportar.addEventListener("click", async () => {
+      try {
+        const res = await fetch("/exportar");
+        if (res.ok) {
+          showMessage("✅ Dados exportados com sucesso! (arquivo JSON gerado)", "success");
+        } else {
+          showMessage("Erro ao exportar os dados.", "error");
+        }
+      } catch {
+        showMessage("Erro na conexão com o servidor.", "error");
+      }
+    });
+
+    // Importar médicos (API externa)
+    btnImportar.addEventListener("click", async () => {
+      try {
+        const res = await fetch("/importar_medicos", { method: "POST" });
+        if (res.ok) {
+          showMessage("✅ Médicos importados com sucesso da API externa!", "success");
+        } else {
+          showMessage("Erro ao importar médicos.", "error");
+        }
+      } catch {
+        showMessage("Erro na conexão com a API.", "error");
+      }
+    });
+
+    // Limpar tela
+    btnLimpar.addEventListener("click", () => {
+      output.innerHTML = "";
+    });
+  </script>
 </body>
 </html>
