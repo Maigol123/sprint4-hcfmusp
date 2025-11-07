@@ -1,0 +1,104 @@
+{
+  "consultas": [
+    {
+      "id": 1,
+      "paciente": "Maria Silva Santos",
+      "data": "15/12/2024",
+      "medico": "Dr. Carlos Oliveira",
+      "especialidade": "Cardiologia",
+      "link": "https://meet.google.com/abc-def-ghi",
+      "horario": "14:30",
+      "local": "HCFMUSP - Ambulatório de Cardiologia",
+      "observacoes": "Trazer exames de sangue recentes e ECG",
+      "data_cadastro": "10/12/2024 09:15"
+    },
+    {
+      "id": 2,
+      "paciente": "João Pereira",
+      "data": "20/12/2024",
+      "medico": "Dra. Ana Costa",
+      "especialidade": "Ortopedia",
+      "link": "https://meet.google.com/xyz-uvw-rst",
+      "horario": "10:00",
+      "local": "HCFMUSP - Instituto de Ortopedia",
+      "observacoes": "Pós-operatório de joelho - trazer raio-x",
+      "data_cadastro": "05/12/2024 14:30"
+    },
+    {
+      "id": 3,
+      "paciente": "Ana Claudia Mendes",
+      "data": "18/12/2024",
+      "medico": "Dr. Roberto Almeida",
+      "especialidade": "Neurologia",
+      "link": "https://meet.google.com/mno-pqr-stu",
+      "horario": "16:45",
+      "local": "HCFMUSP - Ambulatório de Neurologia",
+      "observacoes": "Consulta de retorno - controle de medicação",
+      "data_cadastro": "01/12/2024 11:20"
+    }
+  ],
+  "parentes": [
+    {
+      "id": 1,
+      "nome": "Pedro Silva",
+      "telefone": "11987654321",
+      "parentesco": "Filho",
+      "email": "pedro.silva@email.com"
+    },
+    {
+      "id": 2,
+      "nome": "Carla Santos",
+      "telefone": "11912345678",
+      "parentesco": "Esposa",
+      "email": "carla.santos@email.com"
+    },
+    {
+      "id": 3,
+      "nome": "Roberto Mendes",
+      "telefone": "11955556666",
+      "parentesco": "Irmão",
+      "email": "roberto.mendes@email.com"
+    },
+    {
+      "id": 4,
+      "nome": "Maria Oliveira",
+      "telefone": "11999998888",
+      "parentesco": "Mãe",
+      "email": ""
+    }
+  ],
+  "lembretes": [
+    {
+      "id": 1,
+      "titulo": "Tomar medicamento cardíaco",
+      "mensagem": "Lembrete: tomar Losartana 50mg às 08:00 e às 20:00",
+      "data": "15/12/2024",
+      "horario": "08:00",
+      "enviado": true
+    },
+    {
+      "id": 2,
+      "titulo": "Consulta com cardiologista",
+      "mensagem": "Consulta marcada para hoje às 14:30 com Dr. Carlos Oliveira - Link: https://meet.google.com/abc-def-ghi",
+      "data": "15/12/2024",
+      "horario": "12:00",
+      "enviado": false
+    },
+    {
+      "id": 3,
+      "titulo": "Exames de sangue",
+      "mensagem": "Jejum de 12 horas para exames de sangue marcados para amanhã às 07:00",
+      "data": "16/12/2024",
+      "horario": "19:00",
+      "enviado": false
+    },
+    {
+      "id": 4,
+      "titulo": "Retorno ortopedia",
+      "mensagem": "Consulta de retorno com Dra. Ana Costa em 5 dias - não esquecer raio-x",
+      "data": "20/12/2024",
+      "horario": "09:00",
+      "enviado": false
+    }
+  ]
+}

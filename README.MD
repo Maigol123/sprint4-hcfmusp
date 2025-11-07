@@ -51,3 +51,9 @@ Nome | RM | Função
 Miguel Oliveira Dias(RM:565492)	Desenvolvimento Python, integração Flask e vídeo
 (Lucas Barranha Giannini)(RM:564508) Banco de Dados e Testes
 (João Victor De Sousa)(RM:560907) Interface Web e Documentação
+
+
+
+📽️ Vídeo Demonstrativo
+
+🔗 Link do vídeo: (https://youtu.be/GZsAf2kaaCc)
