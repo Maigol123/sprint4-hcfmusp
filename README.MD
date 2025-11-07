@@ -44,3 +44,10 @@ SPRINT 4/
 │
 └── static/                 # Arquivos do front-end
     └── index.html          # Página web simples (listar, exportar e importar dados)
+
+👨‍💻 Integrantes
+
+Nome | RM | Função
+Miguel Oliveira Dias(RM:565492)	Desenvolvimento Python, integração Flask e vídeo
+(Lucas Barranha Giannini)(RM:564508) Banco de Dados e Testes
+(João Victor De Sousa)(RM:560907) Interface Web e Documentação
